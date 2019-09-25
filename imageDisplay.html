@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dyad Medical Image Display</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon-16x16.png">
+
+    <link rel="stylesheet" href="imageDisplay.css">
+
+</head>
+<body id="body">
+    <div class="grid">
+
+        <div id="topMenuBar">
+                <li><a id="logo" href="https://dyadmed.com/" target="_blank"><img src="dyad_logo.gif" height=45px ><span>DYAD</span></a></li> <!-- HOW DO I FIX THE 'DYAD' to be in the proper place!!??-->
+        </div>
+
+        <div id="leftSideBarArea">
+            <div id="leftSideBar">
+                <div id="toggle_button" class="toggle_button" onclick="toggleLeftSideBar()">
+                    <span id="span1"></span>
+                    <span id="span2"></span>
+                    <span id="span3"></span>
+                </div>
+                <ul>
+                    <script src="libs/tiff.js/tiff.min.js"></script>
+                    <li id="open" onclick="displayImage()">Open</li>
+                    <input id="file_input" type="file" style="display:none;" accept="image/*" multiple> <!--image/* may not show .dcm (DICOM) formats, ***check when needed if I need to added it here manually-->
+                    <li id="zoom_in" onclick="zoomIn()">Zoom in</li>
+                    <li id="zoom_out" onclick="zoomOut()">Zoom out</li>
+                    <li id="reset_zoom">Reset zoom</li>
+                    <li id="grid">Grid</li>
+                    <li id="image_color">Image color</li>
+                    <li id="theme" onclick="toggleTheme()">Theme: Dark/Light</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="display_area">
+            <!-- <canvas id="image_canvas">MAY NOT WORK ON ALL BROWSERS!!!</canvas> -->
+        </div>
+
+        <div id="prediction_display">
+            <h1 id="prediction_results">Prediction Results</h1>
+            <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+            <div id="healthy">
+                <p id="healthyp">Healthy <span id="percent1"> 5% </span></p> <!--have this percentage equal the value of healthy-->
+                <progress value="5" max="100"></progress>
+            </div>
+            <div id="cancer">
+                <p id="cancerp">Cancerous <span id="percent2"> 95% </span></p> <!--have this percentage equal the value of cancer-->
+                <progress id="cancer" value="95" max="100"></progress>
+            </div>
+            <div id="empty"></div>
+
+        </div>
+
+        <div id="footer"></div>
+    </div>
+    <script src="imageDisplay.js"></script>
+</body>
+</html>
